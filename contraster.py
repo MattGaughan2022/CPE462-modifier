@@ -96,4 +96,17 @@ for x in range(0,final_h) :
 
 #cv.imwrite(sys.argv[3], input)
 cv.imshow(sys.argv[3], input)
+
+plt.figure()
+plt.title('Color Histogram')
+plt.xlabel('Bins')
+plt.ylabel('# of pixels')
+colors = ('b','g','r')
+for i, col in enumerate(colors):
+    hist = cv.calcHist([input],[i], None, [256], [0,256])
+    plt.plot(hist, color=col)
+    plt.xlim([0,256])
+
+plt.show()
+
 cv.waitKey(0)
